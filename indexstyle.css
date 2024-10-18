@@ -1,0 +1,200 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;    
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@font-face {
+    font-family: maven-pro;
+    src:  url('assests/Fonts/maven-pro/MavenPro-Regular.ttf') format('truetype');
+
+  }
+  
+  div {
+      font-family: maven-pro;
+  }
+
+header {
+    background: linear-gradient(90deg, #4523AE 0%, #4422A9 30%, #1D0E48 100%);
+    padding: 20px 0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+#VITBImage {
+    width: 15vw;
+    height: auto;
+    padding-left: 1%;
+}
+
+#health {
+    width: 7vw;
+    height: auto;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600vh;
+    padding: 0px 0;
+}
+
+body {
+    background: linear-gradient(to right, #283c86, #45a247);
+}
+
+/* Content styling */
+#WebsiteDetails {
+    text-align: center;
+    padding-top: 5vh;
+}
+
+#DetailsHeader {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#Detailsofheader {
+    font-size: 1.5rem;
+    width: 60%;
+    margin: 0 auto;
+    color: #eee;
+}
+
+/* Card container */
+#cards {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px 0;
+    gap: 50px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#cards div {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#cards div:hover {
+    transform: translateY(-10px);
+}
+
+#cards h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Card images */
+/* Hover effect to swap static image with GIF */
+
+    
+     
+  
+    
+    
+     /* Center the images */
+    /* Smooth transition */
+
+
+
+
+.studencardimgjpg, .Doctorcardimgjpg {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 170px; /* Adjusted size for static image */
+    height: auto;
+    align-items: center;
+    transition: opacity 0.2s ease;
+    padding-left: (px);
+}
+
+#studencardimg, #Doctorcardimg {
+    width: 150px;
+    height: auto;
+    align-items: center;
+    padding-left: 100%;
+    
+    
+}
+
+/* Button */
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button img {
+    width: 44px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+button:hover img {
+    transform: scale(1.5,1.5);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #4523AE 0%, #4422A9 30%, #1D0E48 100%);
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+    color: #bbb;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    #WebsiteDetails {
+        padding-top: 20px;
+    }
+
+    #cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    #cards div {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+
+    #DetailsHeader {
+        font-size: 2rem;
+    }
+
+    #Detailsofheader {
+        font-size: 1rem;
+        width: 90%;
+    }
+}

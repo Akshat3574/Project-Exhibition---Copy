@@ -1,0 +1,185 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@font-face {
+    font-family: maven-pro;
+    src:  url('assests/Fonts/maven-pro/MavenPro-Regular.ttf') format('truetype');
+
+  }
+  
+  div {
+      font-family: maven-pro;
+  }
+
+header {
+    background: linear-gradient(90deg, #4523AE 0%, #4422A9 30%, #1D0E48 100%);
+    padding: 20px 0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+#VITBImage {
+    width: 200px;
+    height: auto;
+}
+
+#health {
+    width: 110px;
+    height: auto;
+}
+
+body {
+    background: linear-gradient(to right, #283c86, #45a247);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* Main Login Card Styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#logincard {
+    background-color: rgba(145, 142, 142, 1.1); /* Semi-transparent background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Slight shadow for depth */
+    text-align: center;
+    width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+#loginheading h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #22ff00, #28d60d9c);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+
+/* Vibrant Color for Labels */
+label {
+    color: linear-gradient(90deg, #3f01fa,#0048ff4b); /* Bright blue color for better visibility */
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+label:hover {
+    color: #e6ba0c; /* Slight hover effect for labels */
+}
+
+#loginform {
+    margin-top: 20px;
+}
+
+/* Form Fields */
+#username, #docpassword {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #1D0E48; 
+}
+
+#submitbutton {
+    margin-top: 20px;
+}
+
+#subbutton {
+    background-color: #4523AE;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#subbutton:hover {
+    background-color: #1D0E48; /* Button hover effect */
+}
+
+/* Footer of Login Card */
+#footerofcard {
+    margin-top: 20px;
+}
+
+#forgotpass, #forgotid, #gotohome {
+    color: #4523AE;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+#forgotpass:hover, #forgotid:hover, #gotohome:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #4523AE 0%, #4422A9 30%, #1D0E48 100%);
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+    color: #bbb;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    #logincard {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #subbutton {
+        padding: 10px;
+    }
+}
