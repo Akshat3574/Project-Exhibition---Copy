@@ -2,22 +2,22 @@ const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const port=5000;
 const app = express();
 
 
 // Middleware
-app.use(bodyParser.json());  // For parsing JSON data (e.g., from fetch API)
-app.use(bodyParser.urlencoded({ extended: true }));  // For parsing URL-encoded form data
+app.use(bodyParser.json());  // For parsing JSON data 
+app.use(bodyParser.urlencoded({ extended: true }));  
 app.use(cors());
-const port = 5000;
-// MySQL connection setup (without calling connect in routes)
+
+
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'Akshat',
     database: 'test1',
-     port:5000 // The database you created
+     
    
 });
 
