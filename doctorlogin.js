@@ -27,6 +27,10 @@
 
         if (data.success) {
             alert("Login successful!");
+            window.location.href='homepagedoc.html';
+            
+           
+            
         } else {
             errorMessageDiv.textContent = 'Invalid Employee ID or Password';
         }
