@@ -27,6 +27,13 @@ body {
     padding-left:3vw ;
 }
 
+.profile img {
+    padding-right: 1vw;
+    height: 9vh;
+    border-radius: 50%;
+}
+
+
 .main-menu {
     display: flex;
     justify-content: center;
@@ -86,11 +93,6 @@ body {
     border-radius: 5px;
 }
 
-.profile img {
-    padding-right: 1vw;
-    height: 9vh;
-    border-radius: 50%;
-}
 
 
 /* Main Section */

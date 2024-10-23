@@ -1,0 +1,133 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #aaaaaa; /* Light background for main body */
+    color: #333;
+    height: 100%;
+}
+
+/* Header styles */
+header {
+    background: linear-gradient(90deg, #2e3192 0%, #1b1464 100%);
+    padding: 20px 0;
+    
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+}
+
+#VITBImage {
+    height: 10vh;        
+    padding-left:1% ;
+}
+
+#health {
+    width: 7vw;
+    height: auto;
+    padding-right: 1vw;
+   
+}
+
+/* Main Card Styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0; /* Added margin for separation */
+}
+
+#ambulance-card {
+    background-color: #fff; /* Simple white for main content area */
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    text-align: left;
+    color: #333;
+}
+
+/* Form Heading */
+#ambulance-card h1 {
+    font-size: 2.2rem;
+    color: #1D0E48;
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    font-size: 1.2rem;
+    color: #1D0E48;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-field input, .form-field select, .form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    border-color: #00ffd5;
+}
+
+/* Button Styles */
+#submit-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#request-ambulance {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+#request-ambulance:hover {
+    background-color: #218838;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #1D0E48 0%, #1A0B38 100%); /* Darker gradient for footer */
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px; /* Adds separation from the main content */
+    font-size: 0.9rem;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #bbb;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    #ambulance-card {
+        width: 90%;
+    }
+}

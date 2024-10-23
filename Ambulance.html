@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Ambulance</title>
+    <link rel="stylesheet" href="./Ambulance.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="header">
+                <a href="./homepage.html"><img id="VITBImage" src="./assests/images/VITLogoEmblem.png" alt="Emblem of VITB" /></a>
+                <img id="health" src="./assests/images/symbol-of-caduceus-removebg-preview.png" alt="health symbol of caduceus" />
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="ambulance-card">
+            <h1>Ambulance Request Form</h1>
+            <form action="./ambulanceConfirmation.html" method="post">
+                <div class="form-field">
+                    <label for="appointment-date">Select Date:</label>
+                    <input type="date" id="appointment-date" name="appointment-date" required>
+                </div>
+                <div class="form-field">
+                    <label for="Location">Location:</label>
+                    <select name="Place" id="Place" required>
+                        <option value="" disabled selected>Place</option>
+                        <option value="Ashta">Ashta</option>
+                        <option value="Sehore">Sehore</option>
+                        <option value="Bhopal">Bhopal</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea name="Location" id="Location" rows="3" placeholder="Enter detailed location" required></textarea>
+                </div>
+                <div class="form-field">
+                </div>
+                <div id="submit-button">
+                    <button id="request-ambulance" type="submit">Request Ambulance</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VITB Medical Portal by Group 81</p>
+    </footer>
+</body>
+</html>
