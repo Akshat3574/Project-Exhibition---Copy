@@ -16,7 +16,7 @@ document.getElementById('studentLoginForm').addEventListener('submit', async fun
     try {
         console.log("Sending request to /api/student_login");
 
-        const response = await fetch('http://localhost:5000/api/student_login.html', {
+        const response = await fetch('http://localhost:5000/api/student_login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ document.getElementById('studentLoginForm').addEventListener('submit', async fun
             localStorage.setItem('token', data.token); // Store JWT token
 
             // Redirect to the homepage or any other page
-            window.location.href = './homepage.html';
+            window.location.href = './homepage';
 
             alert("Login successful");
         } else {

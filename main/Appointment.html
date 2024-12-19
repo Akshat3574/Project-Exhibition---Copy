@@ -10,17 +10,17 @@
     <header>
         <div class="header-area">
             <div class="logo-img">
-                <a href="./homepage.html">
+                <a href="./homepage">
                     <img src="./assests/images/VITLogoEmblem.png" alt="VIT Logo Emblem">
                 </a>
             </div>
             <nav class="main-menu">
                 <ul id="navigation">
-                    <li><a href="./homepage.html">Home</a></li>
-                    <li><a href="./studapmtlst.html">Medical History</a></li>
-                    <li><a href="./Appointment.html">Appointment</a></li>
-                    <li><a href="./Ambulance.html">Request Ambulance</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./homepage">Home</a></li>
+                    <li><a href="./studapmtlst">Medical History</a></li>
+                    <li><a href="./Appointment">Appointment</a></li>
+                    <li><a href="./Ambulance">Request Ambulance</a></li>
+                    <li><a href="./contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="profile">
@@ -41,7 +41,7 @@
                     <input name="appointment_date" id="appointment_date"placeholder="Appointment Date" class="textbox-n" type="datetime-local" required>
                     <input name="symptoms" id="symptoms"placeholder="Symptoms" type="text" required>
                     <input name="registerNo" placeholder="" type="text" id="formregno" style="display: none;"/>
-                    <button type="submit" class="boxed-btn3">Make an Appointment!</button>
+                    <button type="submit" id ="subBtn" class="boxed-btn3">Make an Appointment!</button>
                 </form>
                 <script>
                     document.getElementById("formregno").value = localStorage.reg_no;
@@ -69,7 +69,9 @@
         </div>
     </footer>
     <script>
-        
+        document.getElementById('subBtn').addEventListener('click', function() {
+            window.location.href = "/confirmappointment";
+        });
     </script>
 </body>
 </html>

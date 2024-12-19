@@ -36,7 +36,13 @@ function handleButtonClick(rowId) {
 
 // Fetch data from the server
 function fetchData() {
-    fetch('http://localhost:5000/api/appointment')
+    fetch('http://localhost:5000/api/appointment', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"RegistrationNo": "**"}),
+      })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);

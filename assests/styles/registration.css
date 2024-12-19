@@ -10,7 +10,7 @@ body, html {
 }
 @font-face {
     font-family: maven-pro;
-    src:  url('assests/Fonts/maven-pro/MavenPro-Regular.ttf') format('truetype');
+    src:  url('../Fonts/maven-pro/MavenPro-Regular.ttf') format('truetype');
 
   }
   

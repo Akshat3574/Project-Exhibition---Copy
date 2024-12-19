@@ -12,6 +12,7 @@
         password: password
     };
 
+    console.log(loginData);
     // Send the data to the Node.js server
     try {
         const response = await fetch('http://localhost:5000/api/doctor_login', {

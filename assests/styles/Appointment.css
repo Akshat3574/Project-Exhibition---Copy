@@ -106,7 +106,7 @@ body {
 
 /* Main Section */
 main {
-    background: url('./assests/images/image.png') no-repeat center center/cover;
+    background: url('../images/image.png') no-repeat center center/cover;
     min-height: 600px;
    
     display: flex;

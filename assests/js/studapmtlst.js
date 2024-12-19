@@ -1,42 +1,15 @@
 let dataCache = [];
 
-function handleButtonClick(rowId) {
-    const existingDetailsRow = document.querySelector(`#details-row-${rowId}`);
-    if (existingDetailsRow) {
-        existingDetailsRow.remove();
-        return;
-    }
-
-    /*let formattedLastUpdated = 'Not Updated';
-    if (dataCache[rowId]?.last_updated) {
-        const lastUpdated = new Date(dataCache[rowId].last_updated);
-        if (!isNaN(lastUpdated.getTime())) {
-            formattedLastUpdated = lastUpdated.toLocaleDateString('en-GB');
-        }
-    }*/
-
-    const additionalInfo = `
-        <tr id="details-row-${rowId}">
-            <td colspan="4">
-                <div class="details-content" style="padding: 10px;">
-                    <div style="margin-bottom: 8px;">Additional details for ${dataCache[rowId]?.name || 'N/A'}</div>
-                    
-                </div>
-            </td>
-        </tr>
-    `;
-
-    const clickedRow = document.querySelector(`#row-${rowId}`);
-    if (clickedRow) {
-        clickedRow.insertAdjacentHTML('afterend', additionalInfo);
-    } else {
-        console.error(`Row with ID #row-${rowId} not found`);
-    }
-}
 
 // Fetch data from the server
 function fetchData() {
-    fetch('http://localhost:5000/api/appointment')
+    fetch('http://localhost:5000/api/appointment', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"RegistrationNo": localStorage.getItem("reg_no")}),
+      })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -74,7 +47,7 @@ function buildTable(data) {
             <td>${row.age || 'N/A'}</td>
             <td>${appointmentDate}</td>
             <td>${row.status || 'N/A'}</td>
-            <td><button onclick="handleButtonClick(${index})">+</button></td>
+           
         `;
         tableBody.appendChild(tr);
     });

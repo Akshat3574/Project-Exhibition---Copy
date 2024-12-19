@@ -42,7 +42,7 @@ document
       gender,
       password,
       hostel,
-      roomNo,
+      room,
       medicalCondition,
       bloodGroup,
       contact, // Include contact in the data
@@ -57,20 +57,29 @@ document
         },
         body: JSON.stringify(registrationData),
       });
-
-      // Handle response
-      const result = await response.json();
-      if (result.success) {
-        // Registration successful
-        alert("Registration successful!");
-      } else {
-        // Display error message from server
-        errorMessageDiv.textContent =
-          result.message || "Registration failed. Please try again.";
+    
+      // Log response details for debugging
+      console.log('Response status:', response.status);
+      const responseText = await response.text();
+      console.log('Response body:', responseText);
+    
+      // Try to parse as JSON only if it's actually JSON
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('Failed to parse response as JSON:', parseError);
+        throw new Error('Server returned invalid JSON');
       }
+    
+      if (!result.success) {
+        throw new Error(result.message || 'Registration failed');
+      }
+    
+      alert("Registration successful!");
+      window.location.href = '/login';
     } catch (error) {
       console.error("Error during registration:", error);
-      errorMessageDiv.textContent =
-        "An error occurred. Please try again later.";
-    }
-  });
+      errorMessageDiv.textContent = 
+        error.message || "An error occurred. Please try again later.";
+    }});

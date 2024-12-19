@@ -14,6 +14,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(__dirname));
+app.use('/assests', express.static(path.join(__dirname, 'assests')));
+app.use('/main', express.static(path.join(__dirname, 'main')));
+
 // Database connection setup
 const db = mysql.createConnection({
   host: process.env.HOST,
@@ -31,9 +34,22 @@ db.connect((err) => {
   console.log("Connected to the MySQL database");
 });
 
-app.get('./index.html', (req, res) => {
-  res.send('Welcome to the VITB Medical Portal');
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/main/index'));
+// });
+
+app.get('/:slug?', (req, res, next) => {
+  if(req.params.slug && req.params.slug.includes("api")) {
+    return next();
+  }
+  
+  const filePath = !req.params.slug || req.params.slug === "" 
+    ? '/main/index.html'
+    : `/main/${req.params.slug}.html`;
+    
+  res.sendFile(path.join(__dirname, filePath));
 });
+
 // Helper function to verify JWT
 function authenticateToken(req, res, next) {
   console.log(req.headers);
@@ -52,6 +68,13 @@ function authenticateToken(req, res, next) {
 }
 // Student Rgistration Route
 app.post("/api/student_register", (req, res) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid request body"
+    });
+  }
+
   const {
     registrationNo,
     name,
@@ -59,79 +82,50 @@ app.post("/api/student_register", (req, res) => {
     hostel,
     contact,
     gender,
-    roomNo,
+    room,
     medicalCondition,
     bloodGroup,
   } = req.body;
-  console.log(
-    registrationNo,
-    name,
-    password,
-    hostel,
-    contact,
-    gender,
-    roomNo,
-    medicalCondition,
-    bloodGroup
-  );
+
   // Validate input
-  if (
-    !registrationNo ||
-    !name ||
-    !gender ||
-    !contact ||
-    !hostel ||
-    !roomNo ||
-    !password
-  ) {
-    return res
-      .status(400)
-      .json({ success: false, message: "All fields are required" });
+  if (!registrationNo || !name || !gender || !contact || !hostel || !room || !password) {
+    return res.status(400).json({ 
+      success: false, 
+      message: "All fields are required" 
+    });
   }
 
-  // Insert into stud_info table
-  const query =
-    "INSERT INTO stud_info (RegNo, Name, gender,BloodGroup, Hostel, RoomNo, MedicalCondition) VALUES (?, ?, ?, ?, ?, ?, ?)";
-  db.query(
-    query,
-    [
-      registrationNo,
-      name,
-      password,
-      hostel,
-      roomNo,
-      medicalCondition,
-      bloodGroup,
-    ],
-    (err, result) => {
-      console.log(bloodGroup, registrationNo, name);
-      if (err) {
-        console.log(err);
-        console.error("Error inserting data:", err);
-        return res
-          .status(500)
-          .json({
-            success: false,
-            message: "Database error1",
-            error: err.message,
-          });
-      }
-      res.json({ success: true, message: "Registration successful" });
+  console.log("body: ", req.body);
+
+  // First query - Insert into stud_info
+  const query1 = "INSERT INTO stud_info (RegNo, Name, gender, Blood_Grp,contact, Hostel, Room,Prev_cond ) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
+  db.query(query1, [registrationNo, name, gender, bloodGroup,contact, hostel, room, medicalCondition], (err1, result1) => {
+    if (err1) {
+      console.error("Error inserting into stud_info:", err1);
+      return res.status(500).json({
+        success: false,
+        message: "Database error",
+        error: err1.message
+      });
     }
-  );
-  const query1 = "INSERT INTO stud_cred (RegNo,passwd,Name) VALUES (?,?,?)";
-  db.query(query1, [registrationNo, password, name], (err, result) => {
-    if (err) {
-      console.error("Error creating account", err);
-      return res
-        .status(500)
-        .json({
+
+    // Second query - Insert into stud_cred
+    const query2 = "INSERT INTO stud_cred (RegNo, passwd, Name) VALUES (?, ?, ?)";
+    db.query(query2, [registrationNo, password, name], (err2, result2) => {
+      if (err2) {
+        console.error("Error inserting into stud_cred:", err2);
+        return res.status(500).json({
           success: false,
-          message: "Database error2",
-          error: err.message,
+          message: "Database error",
+          error: err2.message
         });
-    }
-    res.json({ success: true, message: "Account created successfully" });
+      }
+
+      res.json({ 
+        success: true, 
+        message: "Registration successful" 
+      });
+    });
   });
 });
 
@@ -201,10 +195,10 @@ app.post("/api/book_appointment", (req, res) => {
   }
 
   const query =
-    "INSERT INTO appointment (name, age, phone, email, appointment_date,status, symptoms) VALUES (?, ?, ?, ?, ?,'open',?)";
+    "INSERT INTO appointment (name, age, phone, email, appointment_date, status, symptoms, RegistrationNo) VALUES (?, ?, ?, ?, ?,'open',?, ?)";
   db.query(
     query,
-    [name, age, phone, email, appointment_date, symptoms],
+    [name, age, phone, email, appointment_date, symptoms, registerNo],
     (err, result) => {
       if (err) {
         return res.status(500).json({
@@ -214,16 +208,21 @@ app.post("/api/book_appointment", (req, res) => {
         });
       }
 
-      res.json({ success: true, message: "Appointment booked successfully" });
+      res.redirect("/confirmappointment");
+      // res.json({ success: true, message: "Appointment booked successfully" });
     }
   );
 });
 
 // Fetch all appointments (requires JWT)
-app.get("/api/appointment", (req, res) => {
-  const query =
+app.post("/api/appointment", (req, res) => {
+  const { RegistrationNo } = req.body
+  let query =
     "SELECT apmtid, name, age, appointment_date, status FROM appointment";
-  db.query(query, (err, results) => {
+    if(RegistrationNo != "**"){
+      query += " WHERE RegistrationNo = ?"
+    }
+    db.query(query, [RegistrationNo], (err, results) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -241,8 +240,8 @@ app.get("/api/data", (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       return res
-        .status(500)
-        .json({ message: "Database query error", error: err.message });
+      .status(500)
+      .json({ message: "Database query error", error: err.message });
     }
     res.json(results);
   });
@@ -253,12 +252,12 @@ app.post("/api/book_ambulance", authenticateToken, (req, res) => {
   const { date, location, detail } = req.body;
   const { registrationNo } = req.user; // Extract `RegNo` from decoded token
   console.log(date, location, detail);
-
+  
   // }
-
+  
   // Fetch Name and Block from `stud_info` table
   const fetchStudentInfoQuery =
-    "SELECT Name, Hostel FROM stud_info WHERE RegNo = ?";
+  "SELECT Name, Hostel FROM stud_info WHERE RegNo = ?";
   db.query(fetchStudentInfoQuery, [registrationNo], (err, results) => {
     if (err) {
       console.log(registrationNo);
@@ -268,20 +267,20 @@ app.post("/api/book_ambulance", authenticateToken, (req, res) => {
         error: err.message,
       });
     }
-
+    
     if (results.length === 0) {
       return res
-        .status(404)
-        .json({ success: false, message: "Student information not found" });
+      .status(404)
+      .json({ success: false, message: "Student information not found" });
     }
-
+    
     const { Name, Block } = results[0];
-
+    
     // Insert into `ambulance_requests` table
     const insertRequestQuery = `
-            INSERT INTO ambulance_requests (RegNo, Name, Hostel, Date_, location, detail)
-            VALUES (?, ?, ?, ?, ?, ?)
-        `;
+    INSERT INTO ambulance_requests (RegNo, Name, Hostel, Date_, location, detail)
+    VALUES (?, ?, ?, ?, ?, ?)
+    `;
     db.query(
       insertRequestQuery,
       [registrationNo, Name, Block, date, location, detail],
@@ -294,13 +293,11 @@ app.post("/api/book_ambulance", authenticateToken, (req, res) => {
             error: err.message,
           });
         }
-        res.json({
-          success: true,
-          message: "Ambulance request submitted successfully",
-        });
       }
     );
   });
+  res.json({ success: true, message: "Ambulance request booked successfully" });
+  // res.redirect("/confirmappointment");
 });
 
 // Doctor profile route (requires JWT)

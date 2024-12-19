@@ -43,7 +43,7 @@ form.addEventListener('submit', async function (event) {
             }
 
             if (data.success) {
-                alert('Ambulance booked successfully!');
+                location.href = "/confirmambulancebooking";
                 form.reset(); // Reset form after successful booking
             } else {
                 throw new Error(data.message || 'Failed to book ambulance');
