@@ -1,0 +1,240 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+
+/* Header */
+.header-area {
+    background: linear-gradient(90deg, #2e3192 0%, #1b1464 100%);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+p {
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.logo-img img {
+    height: 60px;
+    padding-left:3vw ;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allow menu to take available space */
+}
+
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Allow menu items to wrap */
+    justify-content: center; /* Center items when wrapped */
+    padding: 0 20px; /* Add some padding for better spacing */
+}
+
+.main-menu ul li {
+    position: relative;
+}
+
+.main-menu ul li a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease; /* Changed to all for smoother transitions */
+    border-radius: 50px; /* Move border-radius here */
+    display: inline-block; /* Added to maintain consistent shape */
+}
+
+.main-menu ul li a:hover,
+.main-menu ul li a:focus { /* Added focus state */
+    background-color: #f9b131;
+    color: #fff;
+}
+
+.main-menu ul li .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Changed from fixed 40px */
+    left: 0;
+    background-color: #1b1464;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 200px; /* Added minimum width */
+}
+
+.main-menu ul li:hover .submenu {
+    display: block;
+}
+
+.main-menu ul li .submenu li a {
+    padding: 10px;
+    color: #fff;
+    white-space: nowrap;
+    display: block; /* Changed to block for full-width hover effect */
+    border-radius: 5px; /* Smaller border-radius for submenu items */
+}
+
+.main-menu ul li .submenu li a:hover {
+    background-color: #f9b131;
+    color: #fff;
+}
+.profile img {
+    padding-right: 1vw;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+/* Main Section */
+main {
+    background: url('../images/image.png') no-repeat center center/cover;
+    min-height: 600px;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color:#333;
+    margin-bottom: 10px;
+}
+.centered-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Adjusted height so it doesn’t fill the entire screen */
+    max-height: 600px; /* Limits the max height */
+    text-align: center;
+    background-color: rgba(158, 194, 226, 0.432); /* Light background with opacity */
+    padding: 30px;
+    padding-bottom: 10vh;
+    border-radius: 15px; /* Slightly rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for a box effect */
+    max-width: 900px;
+    width: 100%;
+    margin: 20px auto; /* Adds spacing between the box and the header/footer */
+    border: 2px solid #2e3192;
+}
+
+
+
+
+.popup_inner {
+    background: #fff;
+    padding-top: 10vh;
+    padding-left: 20vw;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.popup_inner h3 {
+    font-size: 32px;
+    color: #2e3192;
+    margin-bottom: 20px;
+}
+
+.popup_inner h3 span {
+    color: #f9b131;
+}
+
+.popup_inner form {
+    display: grid;
+    gap: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2e3192;
+}
+
+.boxed-btn3 {
+    background: #f9b131;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boxed-btn3:hover {
+    background: #2e3192;
+    color: #fff;
+}
+
+footer {
+    background: #2e3192;
+    color: #fff; 
+    padding: 20px 0;
+}
+.footer_top {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer_widget1 {
+    text-align: center;
+    margin: 0 auto; 
+}
+#footerimg {
+    
+    align-items: center;
+    height: 80px;
+}
+
+
+
+.copy_right {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer_top {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+

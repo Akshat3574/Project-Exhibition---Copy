@@ -1,0 +1,130 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #000000;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@font-face {
+    font-family: maven-pro;
+    src:  url('assests/Fonts/maven-pro/MavenPro-Regular.ttf') format('truetype');
+
+  }
+  
+  div {
+      font-family: maven-pro;
+  }
+
+header {
+    background: linear-gradient(90deg, #4523AE 0%, #4422A9 30%, #1D0E48 100%);
+    padding: 20px 0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+#VITBImage {
+    width: 200px;
+    height: auto;
+}
+
+#health {
+    width: 110px;
+    height: auto;
+}
+
+body {
+    background: linear-gradient(to right, #283c86, #45a247);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+
+
+#registration-card {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+#registration-heading h1 {
+    text-align: center;
+}
+
+#registration-form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Adjust icon sizes */
+#VITBImage {
+    width: 15vw; /* Adjusted size */
+    height: auto;
+}
+
+#health {
+    width: 7vw; /* Adjusted size */
+    height: auto;
+}
+
+/* Additional styles for better cohesion */
+#registration-card img {
+    display: block;
+    margin: 5 auto 20px;
+    margin: right 10%; ; /* Center the icons and add space below */
+}
+
+#registration-form div {
+    margin-bottom: 15px;
+    margin-right: 5%; /* Space between form fields */
+}
+
+#submit-button {
+    text-align: center; /* Center the submit button */
+}
+
+#gender label {
+    display: inline-block;
+    margin-right: 15px; /* Adjust spacing as needed */
+}#gender label {
+    display:inline-flex;
+    margin-right: 1%; /* Adjust spacing as needed */
+}

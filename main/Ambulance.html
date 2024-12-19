@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Ambulance</title>
+    <link rel="stylesheet" href="../assests/styles/Ambulance.css">
+</head>
+<body>
+    <header>
+        <div class="header-area">
+            <div class="logo-img">
+                <a href="../main/homepage.html">
+                    <img src="../assests/images/VITLogoEmblem.png" alt="VIT Logo Emblem">
+                </a>
+            </div>
+            <nav class="main-menu">
+                <ul id="navigation">
+                    <li><a href="./homepage.html">Home</a></li>
+                    <li><a href="./homepage.html">Medical History</a></li>
+                    <li><a href="./Appointment.html">Appointment</a></li>
+                    <li><a href="./Ambulance.html">Request Ambulance</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="profile">
+                <a href="#"><img src="../assests/icons/image.png" alt="Profile Icon" /></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="ambulance-card">
+            <h1>Ambulance Request Form</h1>
+            <form id="ambulanceForm">
+                <div class="form-field">
+                    <label for="appointment-date">Select Date:</label>
+                    <input type="date" id="appointment-date" name="date" required>
+                </div>
+                <div class="form-field">
+                    <label for="Location">Location:</label>
+                    <select name="Place" id="Place" required>
+                        <option value="" disabled selected>Place</option>
+                        <option value="Ashta">Ashta</option>
+                        <option value="Sehore">Sehore</option>
+                        <option value="Bhopal">Bhopal</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea name="location" id="locationField" rows="3" placeholder="Enter detailed location" required></textarea>
+                    <p id="charCount">50 characters left</p>
+                </div>
+                <div id="submit-button">
+                    <button id="request-ambulance" type="submit">Request Ambulance</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VITB Medical Portal by Group 81</p>
+    </footer>
+
+    <script src="../assests/js/Ambulance.js"></script>
+</body>
+</html>

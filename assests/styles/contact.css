@@ -1,0 +1,214 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+.header-area {
+    background: linear-gradient(90deg, #2e3192, #1b1464);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-img img {
+    height: 60px;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allow menu to take available space */
+}
+
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Allow menu items to wrap */
+    justify-content: center; /* Center items when wrapped */
+    padding: 0 20px; /* Add some padding for better spacing */
+}
+
+.main-menu ul li {
+    position: relative;
+}
+
+.main-menu ul li a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease; /* Changed to all for smoother transitions */
+    border-radius: 50px; /* Move border-radius here */
+    display: inline-block; /* Added to maintain consistent shape */
+}
+
+.main-menu ul li a:hover,
+.main-menu ul li a:focus { /* Added focus state */
+    background-color: #f9b131;
+    color: #fff;
+}
+
+.main-menu ul li .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Changed from fixed 40px */
+    left: 0;
+    background-color: #1b1464;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 200px; /* Added minimum width */
+}
+
+.main-menu ul li:hover .submenu {
+    display: block;
+}
+
+.main-menu ul li .submenu li a {
+    padding: 10px;
+    color: #fff;
+    white-space: nowrap;
+    display: block; /* Changed to block for full-width hover effect */
+    border-radius: 5px; /* Smaller border-radius for submenu items */
+}
+
+.main-menu ul li .submenu li a:hover {
+    background-color: #f9b131;
+    color: #fff;
+}
+
+
+.profile img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Main Section */
+main {
+    background: url('..//images/image.png') no-repeat center center/cover;
+    min-height: 600px;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space items evenly */
+    align-items: center;
+    height: 70vh;
+    max-height: 600px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    margin: 20px auto;
+    border: 2px solid #2e3192;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-item {
+    text-align: center;
+    flex: 1;
+}
+
+.contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contact-form form {
+    width: 100%;
+}
+
+
+.contact-item h3 {
+    font-size: 20px;
+    color: #2e3192;
+    margin-bottom: 5px;
+}
+
+.contact-item p, .contact-item a {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: #2e3192;
+}
+
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea {
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #2e3192;
+    box-shadow: 0 0 8px rgba(46, 49, 146, 0.5);
+}
+
+.boxed-btn3 {
+    background: #f9b131;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boxed-btn3:hover {
+    background: #2e3192;
+}
+
+/* Footer */
+.footer {
+    background: #2e3192;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#footerimg {
+    height: 80px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="../assests/styles/registration.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="header">
+                <a href="./index.html"><img id="VITBImage" src="../assests/images/VITLogoEmblem.png" alt="Emblem of VITB" /></a>
+                <img id="health" src="../assests/images/symbol-of-caduceus-removebg-preview.png" alt="health symbol of caduceus" />
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="registration-card">
+            <div id="registration-heading">
+                <h1>Student Registration</h1>
+            </div>
+            <div id="registration-form">
+                <form id="studentRegistrationForm">
+                    <div id="registration-no">
+                        <label for="registrationNo">Registration No:</label>
+                        <input type="text" name="registrationNo" id="registrationNo" required />
+                    </div>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" required />
+                    </div>
+                    
+                    <div >
+                        <label for="hostel">Hostel:</label>
+                        <input type="text" name="hostel" id="hostel" required />
+                    </div>
+                    <div id="room-no">
+                        <label for="roomNo">Room No:</label>
+                        <input type="text" name="roomNo" id="roomNo" required />
+                    </div>
+                    <div id="gender">
+                        <label>Gender:</label>
+                        <label for="male">
+                            <input type="radio" name="gender" id="male" value="male" required /> Male
+                        </label>
+                        <label for="female">
+                            <input type="radio" name="gender" id="female" value="female" required /> Female
+                        </label>
+                        <label for="other">
+                            <input type="radio" name="gender" id="other" value="other" required /> Other
+                        </label>
+                    </div>
+                    <div >
+                        <label for="contact">Contact:</label>
+                        <input type="text" name="contact" id="contact" required />
+                    </div>
+                    <div id="medical-condition">
+                        <label for="medicalCondition">Any Previous Medical Conditions:</label>
+                        <input type="text" name="medicalCondition" id="medicalCondition" />
+                    </div>
+                    
+                    <div id="bloodGroup">
+                        <label for="blood-group">Choose Blood Group:</label>
+
+                    <select name="blood-group" id="blood-group">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B+">B+</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    </select>
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" required />
+                    </div>
+                    <div >
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" required />
+                    </div>
+                    <div id="submit-button">
+                        <button id="registerButton" type="submit">Register</button>
+                    </div>
+                    
+                </form>
+                <div id="error-message" style="color: red;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VITB Medical Portal by Group 81</p>
+    </footer>
+
+    <script src="../assests/js/registration.js"></script>
+</body>
+</html>
